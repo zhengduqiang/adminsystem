@@ -1,0 +1,906 @@
+﻿<html class="no-js" xmlns:fm="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="common/css/sapar.css"/>
+    <link rel="stylesheet" href="common/css2/index.css"/>
+    <link rel="icon" href="common/images2/logo.jpg" type="image/x-icon"/>
+    <link rel="stylesheet" href="common/css2/index_inner.css"/>
+    <link rel="stylesheet" type="text/css" href="common/css/common.css"/>
+    <script type="text/javascript" src="common/js/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="caiwu/css/detail.css"/>
+    <title>新澳森校油泵管理系统</title>
+</head>
+<body>
+<div id="container">
+    <div id="hd">
+        <div class="hd-wrap clearfix">
+            <div class="top-light"></div>
+            <ul class="main-nav clearfix" style="height: 0px;margin-left: 5px;">
+                <li data-src="static/ticket/index.html"><a th:href="@{/findFinancingAll}">账本</a></li>
+                <li class="current" data-src="static/caiwu/index.html"><a th:href="@{/findInventoryAll}">库存</a></li>
+                <li data-src="static/msg/index.html"><a th:href="@{/findSupplierAll}">供应商</a></li>
+                <li data-src="static/insurance/index.html"><a th:href="@{/findSalaryAll}">工资</a></li>
+            </ul>
+            <div style="float:left">
+                <img src="common/images/logo1.png" height="100" width="300" style="margin-left: 80px;"/>
+            </div>
+            <div class="toolbar">
+                <div class="login-info clearfix">
+                    <div class="welcome clearfix"><span>欢迎您,</span><a href="javascript:;" class="user-name">管理员</a>
+                    </div>
+                </div>
+                <div class="tool clearfix" style="margin-left: 95px;">
+                    <a href="javascript:;" class="quit-btn exit">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bd">
+        <div class="wrap clearfix">
+            <div class="sidebar" style="background-color: #f1f8fc">
+                <h2 class="sidebar-header"><p>功能导航</p></h2>
+                <ul class="nav">
+                    <li class="office current">
+                        <div class="nav-header"><a th:href="@{/findInventoryAll}" data-src="detail.html"
+                                                   class="clearfix"><span>库存管理</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen">
+                        <div class="nav-header"><a th:href="@{/findComeenterrecordAll}" data-src="baobiao.html"
+                                                   class="clearfix"><span>出入库记录</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen">
+                        <div class="nav-header"><a th:href="@{/manage}" data-src="manage.html" class="clearfix"><span>添加库存</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="topbar clearfix">
+                    <div id="saper-container">
+                        <div id="saper-hd"></div>
+                        <div id="saper-bd">
+                            <div class="subfiled clearfix">
+                                <h2>仓库管理</h2>
+                            </div>
+                            <div class="subfiled-content">
+                                <form name="f1" id="f1" th:action="findInventoryAll"
+                                      method="post">
+                                    <div class="search-box clearfix">
+                                        <div class="kv-item clearfix">
+                                            <label>仓库：</label>
+                                            <div class="kv-item-content">
+                                                <select name="warehouse">
+                                                    <option value="" th:selected="${warehouse==''}">全部</option>
+                                                    <option value="水北仓库" th:selected="${warehouse=='水北仓库'}">水北仓库
+                                                    </option>
+                                                    <option value="上高仓库" th:selected="${warehouse=='上高仓库'}">上高仓库
+                                                    </option>
+                                                    <option value="敖山仓库" th:selected="${warehouse=='敖山仓库'}">敖山仓库
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix">
+                                            <label>商品名称：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" th:value="${commodityName}" name="commodityName"
+                                                       placeholder="商品名称"/>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix">
+                                            <label>型号：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" name="model" th:value="${model}" placeholder="型号"/>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix">
+                                            <label>单位：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" name="unit" placeholder="单位" th:value="${unit}"/>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="sapar-btn sapar-btn-recom query-btn"
+                                               value="搜索"></input>
+                                    </div>
+                                </form>
+
+                                <!--表格开始-->
+                                <div class="table">
+                                    <!--表格操作-->
+                                    <div class="table-operate ue-clear">
+                                        <a href="javascript:;" class="check">仓库信息</a>
+                                    </div>
+                                    <!--表格具体内容-->
+                                    <div class="table-box">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>商品名称</th>
+                                                <th>型号</th>
+                                                <th>单位</th>
+                                                <th>入库时间</th>
+                                                <th>商品金额</th>
+                                                <th>剩余商品</th>
+                                                <th>仓库</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="inventoryAll:${inventoryAlls}">
+                                                <td><a th:text="${inventoryAll.number}" class="blue bold"
+                                                       href="javascript:;">141212297794</a></td>
+                                                <td><p th:text="${inventoryAll.commodityName}">小杜牌油泵</p></td>
+                                                <td th:text="${inventoryAll.model}">大号</td>
+                                                <td th:text="${inventoryAll.unit}"><p class="orange bold">一个</p></td>
+                                                <td th:text="${inventoryAll.inventoryDate}">2018-02-02 16:52</td>
+                                                <td><p th:text="'￥'+${inventoryAll.commodityMoney}"
+                                                       style="color:#ff4e00;font-weight: bold;" class="orange bold">
+                                                    ¥1060.0</p></td>
+                                                <td th:text="${inventoryAll.residue}">1000</td>
+                                                <td th:text="${inventoryAll.warehouse}">仓库</td>
+                                                <td>
+                                                    <input type="hidden" th:value="${inventoryAll.iId}"/>
+                                                    <a href="javascript:;" class="xg">[修改]</a>
+                                                    <a href="javascript:;" th:item-id2="${inventoryAll.iId}" class="ck">[出库]</a>
+                                                    <a href="javascript:;" th:item-id3="${inventoryAll.iId}" class="rk">[入库]</a>
+                                                    <a class="exit4 sc"
+                                                       th:item-id="${inventoryAll.iId}"
+                                                       href="javascript:;">[删除]</a>
+                                                </td>
+                                            </tr>
+                                            <tr class="no-data" th:if="${pageInfo.total==0}">
+                                                <td colspan="10">没有查询到任何数据</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="container large" th:if="${pageInfo.total>12}"
+                                             style="position:absolute;left:680px;top:580px;height: 10px;">
+                                            <p style="color: #7d7d7d;text-transform: uppercase;font-size:14px;position:relative;left:-220px;">
+                                                共<span th:text="${pageInfo.total}"></span>条记录 每页<span
+                                                    th:text="${pageInfo.pageSize}"></span>条 现在<span
+                                                    th:text="${pageInfo.pageNum}"></span>/<span
+                                                    th:text="${pageInfo.pages}"></span>页</p>
+                                            <div class="pagination">
+                                                <ul>
+                                                    <li>
+                                                        <a th:href="@{/findInventoryAll(pageNum=1,warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">首页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum!=1}">
+                                                        <a th:href="@{/findInventoryAll(pageNum=${pageInfo.pageNum-1},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">上一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum==1}">
+                                                        <a th:href="@{/findInventoryAll(pageNum=${pageInfo.pageNum},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">上一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum<pageInfo.pages}">
+                                                        <a th:href="@{/findInventoryAll(pageNum=${pageInfo.pageNum+1},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">下一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum==pageInfo.pages}">
+                                                        <a th:href="@{/findInventoryAll(pageNum=${pageInfo.pageNum},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">下一页</a>
+                                                    </li>
+                                                    <li>
+                                                        <a th:href="@{/findInventoryAll(pageNum=${pageInfo.pages},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit})}">尾页</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--表格结束-->
+                            </div>
+                        </div>
+                        <div id="saper-ft"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ft" class="clearfix">
+        <div class="ft-left">
+            <span>新澳森校油泵管理系统</span>
+            <em>Office&nbsp;System</em>
+        </div>
+        <div class="ft-right">
+            <span>Automation</span>
+            <em>V2.0&nbsp;2014</em>
+        </div>
+    </div>
+</div>
+<!-- 温馨提示 -->
+<div class="exitDialog2">
+    <div class="dialog-content">
+        <div class="ui-dialog-text" style="background-color:ActiveBorder;width: 200px;">
+            <p class="dialog-content">我的温馨提示</p>
+        </div>
+    </div>
+</div>
+<!-- 对话框 -->
+<div class="exitDialog">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">你确定要退出系统？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdtcxt" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="exitDialog4">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+            <img src="../../common/images/sc.jpg" height="78" width="78"/>
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否删除库存信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal" id="qdsc" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="exitDialog5">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否修改库存信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdxg" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--确认是否出库-->
+<div class="exitDialog6">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否出库此商品？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal ckqd2" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--确认是否入库-->
+<div class="exitDialog7">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否入库此商品？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdxg3 rkqd" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 修改对话框 -->
+<div id="xg"
+     style="background-color: rgba(0,0,0,0.8);width:100%;height:100%;position:absolute;top:-0px;z-index:999;display:none; ">
+    <div id="saper-container"
+         style="background-color:white;width:500px; height: 600px; margin-left:500px;margin-top:100px; border-radius: 5%;">
+        <div id="saper-hd"></div>
+        <div class="subfiled clearfix" style="border-radius: 5%;">
+            <h2 style="margin-left: 140px;font-size:19px;">修改库存信息</h2>
+        </div>
+        <div id="saper-bd" style="margin-left: 80px;">
+            <form class="passenger-info">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <input type="hidden" class="cId"/>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">编号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" class="number" placeholder="编号" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品名称：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品名称" class="commodityName" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">型号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="型号" class="model" style="width: 160px;"/>
+                    </div>
+                </div>
+
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">单位：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="单位" class="unit" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品金额：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品金额" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="commodityMoney"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">剩余商品：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="剩余商品" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="residue"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">仓库：</label>
+                    <div class="kv-item-content">
+                        <select class="warehouse" style="width: 160px;">
+                            <option>水北仓库</option>
+                            <option>上高仓库</option>
+                            <option>敖山仓库</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: 5px;">
+                    <label>时间：</label>
+                    <div class="kv-item-content time-select-wrap">
+                        <div class="time-select">
+                            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="inventoryDate"
+                                   style="width: 160px;"
+                                   placeholder="入库时间"/>
+                            <i class="date-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons clearfix" style="margin-left: 81px;">
+                    <br/>
+                    <a href="javascript:;" class="sapar-btn sapar-btn-recom exit5">修改</a>
+                    <a href="javascript:;" id="qx" class="sapar-btn sapar-btn-recom"
+                       style="margin-left: 20px;">取消</a>
+                </div>
+            </form>
+        </div>
+        </form>
+    </div>
+</div>
+<!--出库对话框-->
+<div id="ck"
+     style="background-color: rgba(0,0,0,0.8);width:100%;height:100%;position:absolute;top:-0px;z-index:999;display:none; ">
+    <div id="saper-container"
+         style="background-color:white;width:500px; height: 600px; margin-left:500px;margin-top:100px; border-radius: 5%;">
+        <div id="saper-hd"></div>
+        <div class="subfiled clearfix" style="border-radius: 5%;">
+            <h2 style="margin-left: 140px;font-size:19px;">出库管理</h2>
+        </div>
+        <div id="saper-bd" style="margin-left: 80px;">
+            <form class="passenger-info">
+                <br/>
+                <input type="hidden" class="cId"/>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">编号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" class="number" placeholder="编号" disabled="disabled" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品名称：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品名称" disabled="disabled" class="commodityName" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">型号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="型号" disabled="disabled" class="model" style="width: 160px;"/>
+                    </div>
+                </div>
+
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">单位：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="单位" disabled="disabled" class="unit" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品金额：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品金额" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" disabled="disabled"
+                               class="commodityMoney"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">剩余商品：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="剩余商品" disabled="disabled" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="residue"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">仓库：</label>
+                    <div class="kv-item-content">
+                        <select class="warehouse" disabled="true" style="width: 160px;">
+                            <option>水北仓库</option>
+                            <option>上高仓库</option>
+                            <option>敖山仓库</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">出库数量：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="出库数量" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="comeEnterNum"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">出库备注：</label>
+                    <div class="kv-item-content">
+                        <textarea style="margin-top:5px;width: 160px;height: 60px;" placeholder="出库原因"
+                                  class="remark"></textarea>
+                    </div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: 5px;">
+                    <label>出入库时间：</label>
+                    <div class="kv-item-content time-select-wrap">
+                        <div class="time-select">
+                            <input type="text" class="comeEnterDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+                                   placeholder="出库时间" style="width: 160px;"/>
+                            <i class="date-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons clearfix" style="margin-left: 81px;">
+                    <br/>
+                    <a href="javascript:;" class="sapar-btn sapar-btn-recom exit7">出库</a>
+                    <a href="javascript:;" id="qx2" class="sapar-btn sapar-btn-recom"
+                       style="margin-left: 20px;">取消</a>
+                </div>
+            </form>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<!--入库对话框-->
+<div id="rk"
+     style="background-color: rgba(0,0,0,0.8);width:100%;height:100%;position:absolute;top:-0px;z-index:999;display:none; ">
+    <div id="saper-container"
+         style="background-color:white;width:500px; height: 600px; margin-left:500px;margin-top:100px; border-radius: 5%;">
+        <div id="saper-hd"></div>
+        <div class="subfiled clearfix" style="border-radius: 5%;">
+            <h2 style="margin-left: 140px;font-size:19px;">入库管理</h2>
+        </div>
+        <div id="saper-bd" style="margin-left: 80px;">
+            <form class="passenger-info">
+                <br/>
+                <input type="hidden" class="cId"/>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">编号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" class="number" disabled="disabled" id="number" placeholder="编号"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品名称：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品名称" disabled="disabled" class="commodityName"
+                               id="commodityName"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">型号：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="型号" disabled="disabled" id="model" class="model"
+                               style="width: 160px;"/>
+                    </div>
+                </div>
+
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">单位：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="单位" disabled="disabled" class="unit" id="unit"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">商品金额：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="商品金额" disabled="disabled" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" id="commodityMoney"
+                               class="commodityMoney"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">剩余商品：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="剩余商品" disabled="disabled" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" id="residue" class="residue"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">仓库：</label>
+                    <div class="kv-item-content">
+                        <select class="warehouse" disabled="true" style="width: 160px;" id="warehouse">
+                            <option>水北仓库</option>
+                            <option>上高仓库</option>
+                            <option>敖山仓库</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">入库数量：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="入库数量" maxlength="8"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" id="comeEnterNum"
+                               class="comeEnterNum"
+                               style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">入库备注：</label>
+                    <div class="kv-item-content">
+                        <textarea style="margin-top:5px;width: 160px;height: 60px;" id="remark" placeholder="入库原因"
+                                  class="remark"></textarea>
+                    </div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: 5px;">
+                    <label>入库时间：</label>
+                    <div class="kv-item-content time-select-wrap">
+                        <div class="time-select">
+                            <input type="text" class="comeEnterDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+                                   placeholder="入库时间" id="comeEnterDate" style="width: 160px;"/>
+                            <i class="date-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons clearfix" style="margin-left: 81px;">
+                    <br/>
+                    <a href="javascript:;" class="sapar-btn sapar-btn-recom exit6">入库</a>
+                    <a href="javascript:;" id="qx3" class="sapar-btn sapar-btn-recom"
+                       style="margin-left: 20px;">取消</a>
+                </div>
+            </form>
+        </div>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="common/js/jquery.js"></script>
+<script type="text/javascript" src="common/js/sapar.js"></script>
+<script type="text/javascript" src="common/js2/index.js"></script>
+<script>
+    $(".xg").click(function () {
+        $("#xg").css("display", "block");
+    });
+    $("#qx").click(function () {
+        $("#xg").css("display", "none");
+    });
+    $("#qx2").click(function () {
+        $("#ck").css("display", "none");
+    });
+    $("#qx3").click(function () {
+        $("#rk").css("display", "none");
+    });
+    $('.exitDialog4').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    $('.exit4').click(function () {
+        $('.exitDialog4').Dialog('open');
+    });
+    $("#xt").click(function () {
+        $('.exitDialog4').Dialog('close');
+    });
+    $(".xtqx").click(function () {
+        $('.exitDialog4').Dialog('close');
+        $('.exitDialog').Dialog('close');
+        $('.exitDialog5').Dialog('close');
+        $('.exitDialog6').Dialog('close');
+        $('.exitDialog7').Dialog('close');
+    })
+    $('.exit5').click(function () {
+        $('.exitDialog5').Dialog('open');
+    });
+    $('.exit6').click(function () {
+        $('.exitDialog7').Dialog('open');
+    });
+    $('.exit7').click(function () {
+        $('.exitDialog6').Dialog('open');
+    });
+    $('.exitDialog5').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    $('.exitDialog6').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    $('.exitDialog7').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    var id;
+
+    $(".xg").click(function () {
+        $("#xg").css("display", "block");
+        id = $(this).prev("input").val();
+        findIdAll();
+    });
+
+    function findIdAll() {
+        $.ajax({
+            url: "/findInventoryiId",
+            type: "post",
+            data: {iId: id},
+            dataType: "json",
+            success: function (result) {
+                if (result.warehouse == '水北仓库') {
+                    $(".warehouse").val("水北仓库");
+                } else if (result.warehouse == '上高仓库') {
+                    $(".warehouse").val("上高仓库");
+                } else if (result.warehouse == '敖山仓库') {
+                    $(".warehouse").val("敖山仓库");
+                }
+                $(".number").val(result.number);
+                $(".commodityName").val(result.commodityName);
+                $(".model").val(result.model);
+                $(".unit").val(result.unit);
+                $(".inventoryDate").val(result.inventoryDate);
+                $(".commodityMoney").val(result.commodityMoney);
+                $(".residue").val(result.residue);
+                $(".cId").val(result.iId);
+            },
+            error: function () {
+                alert("出现异常，刷新当前页面");
+            }
+        });
+    }
+
+
+    var id2;
+    $(".sc").click(function () {
+        id2 = $(this).attr("item-id");
+    });
+    //删除库存信息
+    $("#qdsc").click(function () {
+        $.ajax({
+            url: "/deleteInventoryiId",
+            type: "post",
+            data: {iId: id2},
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("删除库存信息成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，请刷新页面重试或联系管理员");
+            }
+        });
+    });
+    //修改库存信息
+    $(".qdxg").click(function () {
+        var warehouse2 = $(".warehouse").val();
+        var number2 = $(".number").val();
+        var commodityName2 = $(".commodityName").val();
+        var model2 = $(".model").val();
+        var unit2 = $(".unit").val();
+        var inventoryDate2 = $(".inventoryDate").val();
+        var commodityMoney2 = $(".commodityMoney").val();
+        var residue2 = $(".residue").val();
+        var cId2 = $(".cId").val();
+        $.ajax({
+            url: "/updateInventoryiId",
+            type: "post",
+            data: {
+                iId: cId2,
+                warehouse: warehouse2,
+                number: number2,
+                commodityName: commodityName2,
+                model: model2,
+                unit: unit2,
+                inventoryDate: inventoryDate2,
+                commodityMoney: commodityMoney2,
+                residue: residue2
+            },
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("修改库存信息成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，请确定文本框内容是否正确或刷新页面重试");
+            }
+        });
+    });
+
+    //出库
+    $(".ck").click(function () {
+        $("#ck").css("display", "block");
+        id = $(this).attr("item-id2");
+        findIdAll();
+    });
+    //出库操作
+    $(".ckqd2").click(function () {
+        var warehouse2 = $(".warehouse").val();
+        var number2 = $(".number").val();
+        var commodityName2 = $(".commodityName").val();
+        var model2 = $(".model").val();
+        var unit2 = $(".unit").val();
+        var comeEnterDate2 = $(".comeEnterDate").val();
+        var residue2 = $(".residue").val();
+        var iId2 = $(".cId").val();
+        let comeEnterNum2 = $(".comeEnterNum").val();
+        let remark2 = $(".remark").val();
+        $.ajax({
+            url: "/addComeenterrecord",
+            type: "post",
+            data: {
+                warehouse: warehouse2,
+                number: number2,
+                commodityName: commodityName2,
+                model: model2,
+                unit: unit2,
+                remark: remark2,
+                comeEnterNum: comeEnterNum2,
+                comeEnterDate: comeEnterDate2,
+                type: '出库',
+                iId: iId2
+            },
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("出库成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，请确定文本框内容是否正确或刷新页面重试");
+            }
+        });
+    });
+
+
+    //入库
+    $(".rk").click(function () {
+        $("#rk").css("display", "block");
+        id = $(this).attr("item-id3");
+        findIdAll();
+    });
+
+    //入库操作
+    $(".rkqd").click(function () {
+        var warehouse2 = $("#warehouse").val();
+        var number2 = $("#number").val();
+        var commodityName2 = $("#commodityName").val();
+        var model2 = $("#model").val();
+        var unit2 = $("#unit").val();
+        var comeEnterDate2 = $("#comeEnterDate").val();
+        var residue2 = $(".residue").val();
+        var iId2 = $(".cId").val();
+        let comeEnterNum2 = $("#comeEnterNum").val();
+        let remark2 = $("#remark").val();
+        $.ajax({
+            url: "/addComeenterrecord",
+            type: "post",
+            data: {
+                warehouse: warehouse2,
+                number: number2,
+                commodityName: commodityName2,
+                model: model2,
+                unit: unit2,
+                remark: remark2,
+                comeEnterNum: comeEnterNum2,
+                comeEnterDate: comeEnterDate2,
+                type: '入库',
+                iId: iId2
+            },
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("入库成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，请确定文本框内容是否正确或刷新页面重试");
+            }
+        });
+    });
+    $(".qdtcxt").click(function () {
+        window.location.href = "/exitLogin";
+    });
+</script>
+</html>

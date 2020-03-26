@@ -1,0 +1,92 @@
+form {
+    margin: 10px 0;
+}
+
+    form .kv-item {
+        float: left;
+    }
+
+        form .kv-item input[type=text] {
+            width: 80px;
+        }
+
+    form .sapar-btn {
+        float: left;
+        margin: 0 0 0 20px;
+    }
+
+table a {
+    display: block;
+    color: #1664b1;
+}
+
+table .bold {
+    font-weight: bold;
+}
+
+table .red {
+    color: #e30000;
+}
+
+table .orange {
+    color: #ff4e00;
+}
+
+
+.container {
+    background: transparent;
+    padding: 1rem;
+    margin: 3rem auto;
+    border-radius: 0.2rem;
+    counter-reset: pagination;
+    text-align: center;
+}
+
+    .container:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+
+    .container ul {
+        width: 100%;
+    }
+
+.large {
+    width: 45rem;
+}
+
+
+.pagination ul, li {
+    list-style: none;
+    display: inline;
+    padding-left: 0px;
+}
+
+.pagination li {
+    counter-increment: pagination;
+}
+
+    .pagination li:hover a {
+        color: #fdfdfd;
+        background-color: #1d1f20;
+        border: solid 1px #1d1f20;
+    }
+
+    .pagination li.active a {
+        color: #fdfdfd;
+        background-color: #1d1f20;
+        border: solid 1px #1d1f20;
+    }
+
+
+    .pagination li a {
+        border: solid 1px #d6d6d6;
+        border-radius: 0.2rem;
+        color: #7d7d7d;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+        text-align: center;
+        padding: 0.5rem 0.9rem;
+    }

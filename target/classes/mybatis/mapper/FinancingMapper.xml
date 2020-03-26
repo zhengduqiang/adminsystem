@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.adminsystem.mapper.FinancingMapper">
+    <!--按条件查询数据和分页-->
+    <select id="findFinancingAll" resultType="Financing" parameterType="Financing">
+        SELECT * FROM financing
+        WHERE 1=1
+        <if test="PlateNum != null and name != ''">
+            AND PlateNum LIKE CONCAT ('%',#{PlateNum},'%')
+        </if>
+        <if test="payWay != null and payWay != ''">
+            AND payWay = #{payWay}
+        </if>
+        <if test="maintainPrincipal != null and maintainPrincipal != ''">
+            AND maintainPrincipal=#{maintainPrincipal}
+        </if>
+        <if test="maintainDate != null and maintainDate != ''">
+            AND maintainDate LIKE CONCAT ('%',#{maintainDate},'%')
+        </if>
+        <if test="billsDueObligor != null and billsDueObligor != ''">
+            AND billsDueObligor LIKE CONCAT ('%',#{billsDueObligor},'%')
+        </if>
+        ORDER BY maintainDate DESC
+    </select>
+    <!--异步：根据id查询账本信息-->
+    <select id="findFinancingId" resultType="Financing" parameterType="int">
+        SELECT * FROM financing	WHERE fId = #{fId}
+    </select>
+
+    <!--异步：修改账本信息-->
+    <update id="updateFinancingId" parameterType="Financing">
+        UPDATE financing SET maintainDate=#{maintainDate},PlateNum=#{PlateNum},maintenanceItems=#{maintenanceItems},
+        itemsMoney=#{itemsMoney},payWay=#{payWay},maintainPrincipal=#{maintainPrincipal},billsDueObligor=#{billsDueObligor}
+        WHERE fId=#{fId}
+    </update>
+
+    <!--异步：添加账本信息-->
+    <insert id="addFinancingAll" parameterType="Financing">
+        INSERT INTO financing (maintainDate,PlateNum,maintenanceItems,itemsMoney,payWay,maintainPrincipal,billsDueObligor)
+        VALUES(#{maintainDate},#{PlateNum},#{maintenanceItems},#{itemsMoney},#{payWay},#{maintainPrincipal},#{billsDueObligor});
+    </insert>
+
+
+</mapper>

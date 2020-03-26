@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.adminsystem.mapper.SupplierMapper">
+
+    <!--同步：查询所有供应商信息和按照条件查询-->
+    <select id="findSupplierAll" resultType="Supplier" parameterType="Supplier">
+        SELECT * FROM supplier WHERE 1=1
+        <if test="supplierName != null and supplierName != ''">
+            AND supplierName LIKE CONCAT ('%',#{supplierName},'%')
+        </if>
+        <if test="supplierDate != null and supplierDate != ''">
+            AND  supplierDate LIKE  CONCAT ('%',#{supplierDate},'%')
+        </if>
+        ORDER BY supplierDate DESC
+    </select>
+
+    <!--异步：根据ID查询供应商信息-->
+    <select id="findSuppliernId" resultType="Supplier" parameterType="int">
+        SELECT * FROM supplier WHERE nId = #{nId}
+    </select>
+
+    <!--异步：根据nId修改供应商信息-->
+    <update id="updateSuppliernId" parameterType="Supplier">
+        UPDATE supplier SET supplierName=#{supplierName},loanAmount=#{loanAmount},
+        amountInArear=#{amountInArear},settlementAmout=#{settlementAmout},supplierDate=#{supplierDate}
+        WHERE nId=#{nId}
+    </update>
+
+    <!--异步：删除供应商信息-->
+    <delete id="deleteSuppliernId" parameterType="int">
+        DELETE FROM supplier WHERE nId=#{nId}
+    </delete>
+
+    <!--异步：添加供应商信息-->
+    <insert id="addSupplier" parameterType="Supplier">
+        INSERT INTO supplier (supplierName,supplierDate,loanAmount,amountInArear,settlementAmout)
+        VALUES(#{supplierName},#{supplierDate},#{loanAmount},#{amountInArear},#{settlementAmout});
+    </insert>
+
+
+</mapper>

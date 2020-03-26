@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.adminsystem.mapper.SalaryMapper">
+    <!--同步：查询所有员工工资和按条件查询-->
+    <select id="findSalaryAll" resultType="Salary" parameterType="Salary">
+        SELECT * FROM salary WHERE 1=1
+        <if test="staffName != null and staffName != ''">
+            AND staffName LIKE CONCAT ('%',#{staffName},'%')
+        </if>
+        <if test="currentMonth != null and currentMonth != ''">
+            AND currentMonth LIKE CONCAT ('%',#{currentMonth},'%')
+        </if>
+        ORDER BY currentMonth DESC
+    </select>
+    <!--异步：根据ID查询员工工资-->
+    <select id="findSalarysId" parameterType="int" resultType="Salary">
+        SELECT * FROM salary WHERE sId=#{sId}
+    </select>
+    <!--异步：根据ID修改员工工资-->
+    <update id="updateSalarysId" parameterType="Salary">
+        UPDATE salary SET staffName=#{staffName},basePay=#{basePay},daysOff=#{daysOff},
+        ofWages=#{ofWages},currentMonth=#{currentMonth} WHERE sId=#{sId}
+    </update>
+    <!--异步：添加员工工资信息-->
+    <insert id="addSalaryAll" parameterType="Salary">
+        INSERT INTO salary (staffName,basePay,daysOff,ofWages,currentMonth)
+        VALUES(#{staffName},#{basePay},#{daysOff},#{ofWages},#{currentMonth});
+    </insert>
+
+
+</mapper>

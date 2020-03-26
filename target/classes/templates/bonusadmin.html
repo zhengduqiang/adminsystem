@@ -1,0 +1,478 @@
+﻿<html class="no-js" xmlns:fm="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="common/css/sapar.css"/>
+    <link rel="stylesheet" href="common/css2/index.css"/>
+    <link rel="icon" href="common/images2/logo.jpg" type="image/x-icon"/>
+    <link rel="stylesheet" href="common/css2/index_inner.css"/>
+    <link rel="stylesheet" type="text/css" href="common/css/common.css"/>
+    <script type="text/javascript" src="common/js/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="caiwu/css/manage.css"/>
+    <title>新澳森校油泵管理系统</title>
+</head>
+<body>
+<div id="container">
+    <div id="hd">
+        <div class="hd-wrap clearfix">
+            <div class="top-light"></div>
+            <ul class="main-nav clearfix" style="height: 0px;margin-left: 5px;">
+                <li data-src="static/ticket/index.html"><a th:href="@{/findFinancingAll}">账本</a></li>
+                <li data-src="static/caiwu/index.html"><a th:href="@{/findInventoryAll}">库存</a></li>
+                <li data-src="static/msg/index.html"><a th:href="@{/findSupplierAll}">供应商</a></li>
+                <li class="current" data-src="static/insurance/index.html"><a th:href="@{/findSalaryAll}">工资</a></li>
+            </ul>
+            <div style="float:left">
+                <img src="common/images/logo1.png" height="100" width="300" style="margin-left: 80px;"/>
+            </div>
+            <div class="toolbar">
+                <div class="login-info clearfix">
+                    <div class="welcome clearfix"><span>欢迎您,</span><a href="javascript:;" class="user-name">管理员</a>
+                    </div>
+                </div>
+                <div class="tool clearfix" style="margin-left: 95px;">
+                    <a href="javascript:;" class="quit-btn exit">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bd">
+        <div class="wrap clearfix">
+            <div class="sidebar" style="background-color: #f1f8fc">
+                <h2 class="sidebar-header"><p>功能导航</p></h2>
+                <ul class="nav">
+                    <li class="office ">
+                        <div class="nav-header"><a th:href="@{/findSalaryAll}" data-src="detail.html"
+                                                   class="clearfix"><span>工资管理</span><i class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen">
+                        <div class="nav-header"><a th:href="@{/salaryadd}" data-src="invoice_apply.html"
+                                                   class="clearfix"><span>增加员工</span><i class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen current ">
+                        <div class="nav-header"><a th:href="@{/findBonusandfineAll}" data-src="manage.html"
+                                                   class="clearfix"><span>奖金罚款管理</span><i class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen ">
+                        <div class="nav-header"><a th:href="@{/salaryadd2}" data-src="manage.html"
+                                                   class="clearfix"><span>添加奖金罚款</span><i class="icon"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="topbar clearfix">
+                    <div id="saper-container">
+                        <div id="saper-hd"></div>
+                        <div id="saper-bd">
+                            <div class="subfiled clearfix">
+                                <h2>奖金与罚款管理</h2>
+                            </div>
+                            <div class="subfiled-content">
+                                <form name="f1" id="f1" th:action="findBonusandfineAll"
+                                      method="post">
+                                    <div class="kv-item clearfix"
+                                         style="margin-top:10px;">
+                                        <label>员工姓名：</label>
+                                        <div class="kv-item-content">
+                                            <input type="text" placeholder="员工姓名" th:value="${staffName}"
+                                                   name="staffName"
+                                                   style="width: 100px;"/>
+                                        </div>
+                                    </div>
+                                    <div class="kv-item clearfix" style="margin-top:-39px;">
+                                        <label>奖罚月份：</label>
+                                        <div class="kv-item-content time-select-wrap">
+                                            <div class="time-select">
+                                                <input type="text"
+                                                       onfocus="WdatePicker({dateFmt:'yyyy-MM'})"
+                                                       placeholder="奖罚月份"
+                                                       name="bonusandfineDate"
+                                                       th:value="${bonusandfineDate}"/>
+                                                <i class="date-icon"></i>
+                                            </div>
+                                        </div>
+                                        <input type="submit" style="margin-left: 30px;"
+                                               class="sapar-btn sapar-btn-recom query-btn" value="搜索"/>
+                                    </div>
+                                </form>
+                                <div class="tab-container" data-trigger="click">
+                                    <div class="tab-content">
+                                        <div class="tab-content-item">
+
+                                            <!--表格开始-->
+                                            <div class="table">
+
+                                                <!--表格操作-->
+                                                <div class="table-operate ue-clear">
+                                                    <a href="javascript:;" class="check">奖金罚款信息</a>
+                                                </div>
+                                                <!--表格具体内容-->
+                                                <div class="table-box">
+                                                    <table>
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="num">员工姓名</th>
+                                                            <th class="name">奖金金额</th>
+                                                            <th class="process">奖金备注</th>
+                                                            <th class="node">罚款金额</th>
+                                                            <th class="time">罚款备注</th>
+                                                            <th class="time">奖金和罚款月份</th>
+                                                            <th class="operate">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr class="no-data"
+                                                            th:each="bonusandfineAll:${bonusandfineAlls}">
+                                                            <td><a th:text="${bonusandfineAll.staffName}"
+                                                                   class="blue bold" href="javascript:;">小杜</a></td>
+                                                            <td><p th:text="${'￥'+bonusandfineAll.bonus}"
+                                                                   style="color:green;font-weight: bold;">￥0.00</p></td>
+                                                            <td th:text="${bonusandfineAll.bonusRemark}">无</td>
+                                                            <td><p class="orange bold"
+                                                                   th:text="${'￥'+bonusandfineAll.fine}"
+                                                                   style="color:red;font-weight: bold;">¥1000</p></td>
+                                                            <td th:text="${bonusandfineAll.fineRemark}">做事不好</td>
+                                                            <td th:text="${bonusandfineAll.bonusandfineDate}">2018-08-08
+                                                                16:50
+                                                            </td>
+                                                            <td>
+                                                                <input type="hidden" th:value="${bonusandfineAll.bId}"/>
+                                                                <a href="javascript:;" class="xg">[修改]</a><a
+                                                                    href="javascript:;" style="margin-left: 15px;"
+                                                                    class="exit4 sc2"
+                                                                    th:item-id="${bonusandfineAll.bId}">[删除]</a></td>
+                                                        </tr>
+                                                        <tr class="no-data" th:if="${pageInfo.total==0}">
+                                                            <td colspan="10">没有查询到任何数据</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="container large" th:if="${pageInfo.total>12}"
+                                                         style="position:absolute;left:680px;top:580px;height: 10px;">
+                                                        <p style="color: #7d7d7d;text-transform: uppercase;font-size:14px;position:relative;left:-220px;">
+                                                            共<span th:text="${pageInfo.total}"></span>条记录 每页<span
+                                                                th:text="${pageInfo.pageSize}"></span>条 现在<span
+                                                                th:text="${pageInfo.pageNum}"></span>/<span
+                                                                th:text="${pageInfo.pages}"></span>页</p>
+                                                        <div class="pagination">
+                                                            <ul>
+                                                                <li>
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=1,staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">首页</a>
+                                                                </li>
+                                                                <li th:if="${pageInfo.pageNum!=1}">
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=${pageInfo.pageNum-1},staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">上一页</a>
+                                                                </li>
+                                                                <li th:if="${pageInfo.pageNum==1}">
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=${pageInfo.pageNum},staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">上一页</a>
+                                                                </li>
+                                                                <li th:if="${pageInfo.pageNum<pageInfo.pages}">
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=${pageInfo.pageNum+1},staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">下一页</a>
+                                                                </li>
+                                                                <li th:if="${pageInfo.pageNum==pageInfo.pages}">
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=${pageInfo.pageNum},staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">下一页</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a th:href="@{/findBonusandfineAll(pageNum=${pageInfo.pages},staffName=${staffName},bonusandfineDate=${bonusandfineDate})}">尾页</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div><!--表格结束-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="saper-ft"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ft" class="clearfix">
+        <div class="ft-left">
+            <span>新澳森校油泵管理系统</span>
+            <em>Office&nbsp;System</em>
+        </div>
+        <div class="ft-right">
+            <span>Automation</span>
+            <em>V2.0&nbsp;2014</em>
+        </div>
+    </div>
+</div>
+<!-- 温馨提示 -->
+<div class="exitDialog2">
+    <div class="dialog-content">
+        <div class="ui-dialog-text" style="background-color:ActiveBorder;width: 200px;">
+            <p class="dialog-content">我的温馨提示</p>
+        </div>
+    </div>
+</div>
+<!-- 对话框 -->
+<div class="exitDialog">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">你确定要退出系统？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdtcxt" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="exitDialog4">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+            <img src="../../common/images/sc.jpg" height="78" width="78"/>
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否删除奖罚信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdsc" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="exitDialog5">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否修改奖罚信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdxg" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 修改对话框 -->
+<div id="xg"
+     style="background-color: rgba(0,0,0,0.8);width:100%;height:100%;position:absolute;top:-0px;z-index:999;display:none; ">
+    <div id="saper-container"
+         style="background-color:white;width:500px; height: 500px; margin-left:540px;margin-top:100px; border-radius: 5%;">
+        <div id="saper-hd"></div>
+        <div class="subfiled clearfix" style="border-radius: 5%;">
+            <h2 style="margin-left: 140px;font-size:19px;">奖金和罚款信息</h2>
+        </div>
+        <div id="saper-bd" style="margin-left: 80px;">
+            <br/>
+            <br/>
+            <br/>
+            <input type="hidden" class="bId"/>
+            <form class="passenger-info">
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">员工姓名：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="员工姓名" class="staffName" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">奖金金额：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="奖金金额" class="bonus" style="width: 160px;"/>
+                    </div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: -10px;">
+                    <label style="font-size: 13px;">奖金备注：</label>
+                    <div class="kv-item-content">
+                        &nbsp;&nbsp;&nbsp;<textarea style="margin-top:5px;height: 60px;width: 160px;" placeholder="奖金备注"
+                                                    class="bonusRemark"></textarea>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix">
+                    <label style="font-size: 13px;">罚款金额：</label>
+                    <div class="kv-item-content">
+                        <input type="text" placeholder="罚款金额" class="fine" style="width: 160px;"/>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: -10px;">
+                    <label style="font-size: 13px;">罚款备注：</label>
+                    <div class="kv-item-content">
+                        &nbsp;&nbsp;&nbsp;<textarea style="margin-top:5px;height: 60px;width: 160px;" placeholder="罚款备注"
+                                                    class="fineRemark"></textarea>
+                    </div>
+                    <div class="kv-item-tip"></div>
+                </div>
+                <div class="kv-item clearfix" style="margin-left: 5px;">
+                    <label> 奖罚月份：</label>
+                    <div class="kv-item-content time-select-wrap">
+                        <div class="time-select">
+                            <input type="text" class="bonusandfineDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                   placeholder="奖金和罚款月份" style="width: 160px;"/>
+                            <i class="date-icon"></i>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="buttons clearfix" style="margin-left: 81px;">
+                    <a href="javascript:;" class="sapar-btn sapar-btn-recom exit5">修改</a>
+                    <a href="javascript:;" id="qx" class="sapar-btn sapar-btn-recom" style="margin-left: 20px;">取消</a>
+                </div>
+            </form>
+        </div>
+        </form>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="common/js/jquery.js"></script>
+<script type="text/javascript" src="common/js/sapar.js"></script>
+<script type="text/javascript" src="common/js2/index.js"></script>
+<script>
+    $(".xg").click(function () {
+        $("#xg").css("display", "block");
+    });
+
+    $("#qx").click(function () {
+        $("#xg").css("display", "none");
+    });
+
+    $('.exitDialog4').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+
+    $('.exit4').click(function () {
+        $('.exitDialog4').Dialog('open');
+    });
+    $("#xt").click(function () {
+        $('.exitDialog4').Dialog('close');
+    });
+    $(".xtqx").click(function () {
+        $('.exitDialog4').Dialog('close');
+        $('.exitDialog').Dialog('close');
+        $('.exitDialog5').Dialog('close');
+
+    });
+    $('.exit5').click(function () {
+        $('.exitDialog5').Dialog('open');
+    });
+    $('.exitDialog5').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    //按照ID查询奖罚信息
+    $(".xg").click(function () {
+        var id = $(this).prev("input").val();
+        $.ajax({
+            url: "/findBonusandfine",
+            type: "post",
+            data: {bId: id},
+            dataType: "json",
+            success: function (result) {
+                $(".staffName").val(result.staffName);
+                $(".bonus").val(result.bonus);
+                $(".bonusRemark").val(result.bonusRemark);
+                $(".fine").val(result.fine);
+                $(".fineRemark").val(result.fineRemark);
+                $(".bonusandfineDate").val(result.bonusandfineDate);
+                $(".bId").val(result.bId);
+                console.log(result);
+            },
+            error: function () {
+                alert("出现异常，刷新页面或者联系管理员");
+            }
+        })
+    });
+
+    //修改奖罚信息
+    $(".qdxg").click(function () {
+        var staffName2 = $(".staffName").val();
+        var bonus2 = $(".bonus").val();
+        var bonusRemark2 = $(".bonusRemark").val();
+        var fine2 = $(".fine").val();
+        var fineRemark2 = $(".fineRemark").val();
+        var bonusandfineDate2 = $(".bonusandfineDate").val();
+        var bId2 = $(".bId").val();
+        $.ajax({
+            url: "/updateBonusandfine",
+            type: "post",
+            data: {
+                bonus: bonus2,
+                bonusRemark: bonusRemark2,
+                fine: fine2,
+                fineRemark: fineRemark2,
+                staffName: staffName2,
+                bonusandfineDate: bonusandfineDate2,
+                bId: bId2
+            },
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("修改员工奖罚信息成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，请确定文本框内容输入正确或刷新当前页面");
+            }
+        })
+    });
+
+    var id2;
+    $(".sc2").click(function () {
+        id2 = $(this).attr("item-id");
+    });
+    //删除库存信息
+    $(".qdsc").click(function () {
+        $.ajax({
+            url: "/deleteBonusandfinebId",
+            type: "post",
+            data: {bId: id2},
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("删除奖罚信息成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，刷新页面或者联系管理员");
+            }
+        });
+    });
+    $(".qdtcxt").click(function () {
+        window.location.href = "/exitLogin";
+    });
+</script>
+</html>

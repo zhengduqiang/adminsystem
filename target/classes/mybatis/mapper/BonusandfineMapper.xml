@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.adminsystem.mapper.BonusandfineMapper">
+    <!--同步：查询罚款奖金表的所有数据按照条件查询-->
+    <select id="findBonusandfineAll" parameterType="Bonusandfine" resultType="Bonusandfine">
+        SELECT * FROM bonusandfine WHERE 1 = 1
+        <if test="staffName != null and staffName != ''">
+            AND staffName LIKE CONCAT ('%',#{staffName},'%')
+        </if>
+        <if test="bonusandfineDate != null and bonusandfineDate != ''">
+            AND bonusandfineDate LIKE CONCAT ('%',#{bonusandfineDate},'%')
+        </if>
+        ORDER BY bonusandfineDate DESC
+    </select>
+    <!--异步：根据ID查询奖罚信息-->
+    <select id="findBonusandfine" resultType="Bonusandfine" parameterType="int">
+            SELECT * FROM bonusandfine WHERE bId = #{bId}
+    </select>
+    <!--异步：根据ID修改奖罚信息-->
+    <update id="updateBonusandfine" parameterType="Bonusandfine">
+        UPDATE bonusandfine SET staffName=#{staffName},bonus=#{bonus},bonusRemark=#{bonusRemark},fine=#{fine},
+        fineRemark=#{fineRemark},bonusandfineDate=#{bonusandfineDate}  WHERE bId=#{bId}
+    </update>
+
+    <!--异步：删除奖罚信息-->
+    <delete id="deleteBonusandfinebId" parameterType="int">
+        DELETE FROM bonusandfine WHERE bId=#{bId}
+    </delete>
+
+
+    <!--异步：添加奖罚信息-->
+    <insert id="addBonusandfine" parameterType="Bonusandfine">
+        INSERT INTO bonusandfine (staffName,bonus,bonusRemark,fine,fineRemark,bonusandfineDate)
+        VALUES(#{staffName},#{bonus},#{bonusRemark},#{fine},#{fineRemark},#{bonusandfineDate})
+    </insert>
+
+
+
+</mapper>

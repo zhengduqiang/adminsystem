@@ -1,0 +1,105 @@
+.kv-item-content {
+	float: left;
+	width: 80%;
+}
+
+.kv-item-content span{
+	margin-left: 5px;
+}
+
+.kv-item label{
+	width:80px;
+}
+
+.pay ul li {
+	width: 150px;
+	margin: 5px 10px 5px 0;
+	float: left;
+	border: none;
+	padding: 0;
+}
+
+.pay .radioselect {
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+	float: left;
+	margin-right: 6px;
+}
+
+.pay img {
+	border: 1px solid #ccc;
+	width: 100px;
+	height: 20px;
+	display: block;
+	float: left;
+	padding: 5px 10px;
+}
+
+.pay .select {
+	border: 1px solid #ff4e00;
+	background: url('../images/pay_select.gif') no-repeat right top;
+}
+
+.buttons{
+	margin-left: 80px;
+}
+
+.container {
+	background: transparent;
+	padding: 1rem;
+	margin: 3rem auto;
+	border-radius: 0.2rem;
+	counter-reset: pagination;
+	text-align: center;
+}
+
+	.container:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+
+	.container ul {
+		width: 100%;
+	}
+
+.large {
+	width: 45rem;
+}
+
+
+.pagination ul, li {
+	list-style: none;
+	display: inline;
+	padding-left: 0px;
+}
+
+.pagination li {
+	counter-increment: pagination;
+}
+
+	.pagination li:hover a {
+		color: #fdfdfd;
+		background-color: #1d1f20;
+		border: solid 1px #1d1f20;
+	}
+
+	.pagination li.active a {
+		color: #fdfdfd;
+		background-color: #1d1f20;
+		border: solid 1px #1d1f20;
+	}
+
+
+	.pagination li a {
+		border: solid 1px #d6d6d6;
+		border-radius: 0.2rem;
+		color: #7d7d7d;
+		text-decoration: none;
+		text-transform: uppercase;
+		display: inline-block;
+		text-align: center;
+		padding: 0.5rem 0.9rem;
+	}
+

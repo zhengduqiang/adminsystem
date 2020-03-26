@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e594639-a160-4ecc-9d52-a5d95f1a8588" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="managementsystem@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="managementsystem@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="managementsystem@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="managementsystem: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="managementsystem@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="managementsystem: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="supplier: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/adminsystem/controller/AdminController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\JavaXiangGuan\Maven_Repository" />
+        <option name="userSettingsFile" value="D:\JavaXiangGuan\Maven\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YfM5u5guaQgws0XXKmXRsU7VGe" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="js.last.introduce.type" value="VAR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hisystem" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.adminsystem.util" />
+      <recent name="com.example.adminsystem.controller" />
+      <recent name="com.example.adminsystem.mapper" />
+      <recent name="com.example.adminsystem.pojo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\templates" />
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\static" />
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\static\common\ticket" />
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\static\common" />
+      <recent name="C:\Users\XiaoDu\Desktop\adminsystem\adminsystem\src\main\resources\mybatis\mapper" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AdminsystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="adminsystem" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.adminsystem.AdminsystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e594639-a160-4ecc-9d52-a5d95f1a8588" name="Default Changelist" comment="" />
+      <created>1583329015912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583329015912</updated>
+      <workItem from="1583329022281" duration="2000" />
+      <workItem from="1583367552746" duration="2846000" />
+      <workItem from="1583371084484" duration="2323000" />
+      <workItem from="1583547081793" duration="4648000" />
+      <workItem from="1583564588894" duration="2213000" />
+      <workItem from="1583574832659" duration="10716000" />
+      <workItem from="1583631213795" duration="17311000" />
+      <workItem from="1583650989076" duration="6801000" />
+      <workItem from="1583662179557" duration="9080000" />
+      <workItem from="1583718827964" duration="6112000" />
+      <workItem from="1583753181275" duration="2458000" />
+      <workItem from="1583805458547" duration="320000" />
+      <workItem from="1583806147230" duration="8608000" />
+      <workItem from="1583890590864" duration="12053000" />
+      <workItem from="1583913177579" duration="6361000" />
+      <workItem from="1583923088284" duration="10537000" />
+      <workItem from="1583975752617" duration="5141000" />
+      <workItem from="1583983124364" duration="3301000" />
+      <workItem from="1583988071313" duration="14155000" />
+      <workItem from="1584003252879" duration="6419000" />
+      <workItem from="1584060081097" duration="13744000" />
+      <workItem from="1584077548967" duration="8390000" />
+      <workItem from="1584091091634" duration="8469000" />
+      <workItem from="1584106240425" duration="1136000" />
+      <workItem from="1584149927172" duration="22306000" />
+      <workItem from="1584177898049" duration="7817000" />
+      <workItem from="1584236571680" duration="358000" />
+      <workItem from="1584238435387" duration="6046000" />
+      <workItem from="1584249820558" duration="7021000" />
+      <workItem from="1584257716495" duration="670000" />
+      <workItem from="1584358828764" duration="1091000" />
+      <workItem from="1584362275554" duration="4624000" />
+      <workItem from="1584411432031" duration="20880000" />
+      <workItem from="1584456744267" duration="787000" />
+      <workItem from="1584497307319" duration="3111000" />
+      <workItem from="1584503783906" duration="6011000" />
+      <workItem from="1584588902514" duration="85000" />
+      <workItem from="1584591046422" duration="106000" />
+      <workItem from="1584697581837" duration="2009000" />
+      <workItem from="1584712209613" duration="1284000" />
+      <workItem from="1584795505953" duration="129000" />
+      <workItem from="1584796218178" duration="3301000" />
+      <workItem from="1585012416577" duration="850000" />
+      <workItem from="1585055338642" duration="4595000" />
+      <workItem from="1585065893668" duration="1754000" />
+      <workItem from="1585098360131" duration="2056000" />
+      <workItem from="1585121268724" duration="2866000" />
+      <workItem from="1585197885859" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Project_Structure" timestamp="1583369396349">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1583369396349" />
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583368808426">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583368808426" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1584164531521">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1584164531521" />
+    <state x="527" y="271" width="481" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584243052594">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="527" y="271" width="481" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1584243052594" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584251555028">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251555028" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1584591131885">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584591131885" />
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1584800403516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584800403516" />
+    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1584800403516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584800403516" />
+    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1584800403516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584800403516" />
+    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1584800403516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584800403516" />
+    <state width="1493" height="239" key="GridCell.Tab.1.bottom" timestamp="1584800403501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584800403501" />
+    <state width="1493" height="239" key="GridCell.Tab.1.center" timestamp="1584800403501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584800403501" />
+    <state width="1493" height="239" key="GridCell.Tab.1.left" timestamp="1584800403501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584800403501" />
+    <state width="1493" height="239" key="GridCell.Tab.1.right" timestamp="1584800403501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="239" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584800403501" />
+    <state width="1493" height="348" key="GridCell.Tab.2.bottom" timestamp="1584369925111">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="348" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584369925111" />
+    <state width="1493" height="348" key="GridCell.Tab.2.center" timestamp="1584369925111">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="348" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1584369925111" />
+    <state width="1493" height="348" key="GridCell.Tab.2.left" timestamp="1584369925111">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="348" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1584369925111" />
+    <state width="1493" height="348" key="GridCell.Tab.2.right" timestamp="1584369925111">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="348" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1584369925111" />
+    <state x="349" y="74" key="Registry" timestamp="1583551123357">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="74" key="Registry/0.0.1536.824@0.0.1536.824" timestamp="1583551123357" />
+    <state x="270" y="54" key="SettingsEditor" timestamp="1583551084401">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1583551084401" />
+    <state x="610" y="312" key="UiDebugger" timestamp="1583371755720">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="610" y="312" key="UiDebugger/0.0.1536.824@0.0.1536.824" timestamp="1583371755720" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1584796248224">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1584796248224" />
+    <state x="410" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584152660575">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="410" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1584152660575" />
+    <state x="93" y="93" width="1350" height="638" key="dock-window-1" timestamp="1584091648248">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1584091648248" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1584254348518">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1584254348518" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584498527140">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584498527140" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/detail.html</url>
+          <line>698</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/detail.html</url>
+          <line>815</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/adminsystem/controller/AdminController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

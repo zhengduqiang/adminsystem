@@ -1,0 +1,321 @@
+﻿<html class="no-js" xmlns:fm="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="common/css/sapar.css"/>
+    <link rel="stylesheet" href="common/css2/index.css"/>
+    <link rel="icon" href="common/images2/logo.jpg" type="image/x-icon"/>
+    <link rel="stylesheet" href="common/css2/index_inner.css"/>
+    <link rel="stylesheet" type="text/css" href="ticket/css/group_ticket_apply.css"/>
+    <script type="text/javascript" src="common/js/WdatePicker.js"></script>
+    <title>新澳森校油泵管理系统</title>
+</head>
+<body>
+<div id="container">
+    <div id="hd">
+        <div class="hd-wrap clearfix">
+            <div class="top-light"></div>
+            <ul class="main-nav clearfix" style="height: 0px;margin-left: 5px;">
+                <li class="current" data-src="static/ticket/index.html"><a th:href="@{/findFinancingAll}">账本</a></li>
+                <li  data-src="static/caiwu/index.html"><a th:href="@{/findInventoryAll}">库存</a></li>
+                <li  data-src="static/msg/index.html"><a th:href="@{/findSupplierAll}">供应商</a></li>
+                <li data-src="static/insurance/index.html"><a th:href="@{/findSalaryAll}">工资</a></li>
+            </ul>
+            <div style="float:left">
+                <img src="common/images/logo1.png" height="100" width="300" style="margin-left: 80px;"/>
+            </div>
+            <div class="toolbar">
+                <div class="login-info clearfix">
+                    <div class="welcome clearfix"><span>欢迎您,</span><a href="javascript:;" class="user-name">管理员</a>
+                    </div>
+                </div>
+                <div class="tool clearfix" style="margin-left: 95px;">
+                    <a href="javascript:;" class="quit-btn exit">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bd">
+        <div class="wrap clearfix">
+            <div class="sidebar" style="background-color: #f1f8fc">
+                <h2 class="sidebar-header"><p>功能导航</p></h2>
+                <ul class="nav">
+                    <li class="office ">
+                        <div class="nav-header"><a th:href="@{/findFinancingAll}" data-src="buy_msg.html" class="clearfix"><span>账本管理</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen current">
+                        <div class="nav-header"><a th:href="@{/group_ticket_apply}" data-src="send_msg.html"
+                                                   class="clearfix"><span>添加账本</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="topbar clearfix">
+                    <div id="saper-container">
+                        <div id="saper-hd"></div>
+                        <div id="saper-bd">
+                            <div class="subfiled clearfix">
+                                <h2>账本管理</h2>
+                            </div>
+                            <div class="subfiled-style2 clearfix">
+                                <h2>添加账本信息</h2>
+                            </div>
+                            <form class="passenger-info">
+                                <div class="kv-item clearfix ">
+                                    <label style="font-size: 13px;">车牌号：</label>
+                                    <div class="kv-item-content">
+                                        <input type="text" placeholder="车牌号" class="PlateNum" style="width: 180px;"/>
+                                    </div>
+                                    <div class="kv-item-tip PlateNum2" style="color: red;"></div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="padding-left: 12px;">维修日期：</label>
+                                    <div class="kv-item-content time-select-wrap">
+                                        <div class="time-select">
+                                            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+                                                   style="width: 180px;"
+                                                   placeholder="维修日期" class="maintainDate"/>
+                                        </div>
+                                        <span class="kv-item-tip maintainDate2" style="color: red;"></span>
+                                    </div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="font-size: 13px;">维修项目：</label>
+                                    <div class="kv-item-content">
+                                        <textarea style="margin-top:5px;width: 180px;" placeholder="维修项目" class="maintenanceItems"></textarea>
+                                    </div>
+                                    <div class="kv-item-tip maintenanceItems2" style="color: red;"></div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="font-size: 13px;">维修价格：</label>
+                                    <div class="kv-item-content">
+                                        <input type="text" placeholder="维修价格" class="itemsMoney" maxlength="8"
+                                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                               style="width: 180px;"/>
+                                    </div>
+                                    <div class="kv-item-tip itemsMoney2" style="color: red;"></div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="font-size: 13px;">支付方式：</label>
+                                    <div class="kv-item-content">
+                                        <select class="payWay">
+                                            <option value="现金">现金</option>
+                                            <option value="支付宝">支付宝</option>
+                                            <option value="微信">微信</option>
+                                            <option value="欠账">欠账</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="font-size: 13px;">维修负责人：</label>
+                                    <div class="kv-item-content">
+                                        <input type="text" placeholder="维修负责人" class="maintainPrincipal"
+                                               style="width: 180px;"/>
+                                    </div>
+                                    <div class="kv-item-tip maintainPrincipal2" >无维修负责人可不填</div>
+                                </div>
+                                <div class="kv-item clearfix">
+                                    <label style="font-size: 13px;">欠账负责人：</label>
+                                    <div class="kv-item-content">
+                                        <input type="text" placeholder="欠账负责人" class="billsDueObligor"
+                                               style="width: 180px;"/>
+                                    </div>
+                                    <div class="kv-item-tip ">无人欠账可不填</div>
+                                </div>
+                                <div class="buttons clearfix" style="margin-left: 3px;">
+                                    <a href="javascript:;" class="sapar-btn sapar-btn-recom exit4">添加</a>
+                                    <a href="javascript:;" class="sapar-btn sapar-btn-recom" style="margin-left: 20px;"
+                                       id="qk">清空</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="ft" class="clearfix">
+        <div class="ft-left">
+            <span>新澳森校油泵管理系统</span>
+            <em>Office&nbsp;System</em>
+        </div>
+        <div class="ft-right">
+            <span>Automation</span>
+            <em>V2.0&nbsp;2014</em>
+        </div>
+    </div>
+</div>
+<!-- 温馨提示 -->
+<div class="exitDialog2">
+    <div class="dialog-content">
+        <div class="ui-dialog-text" style="background-color:ActiveBorder;width: 200px;">
+            <p class="dialog-content">我的温馨提示</p>
+        </div>
+    </div>
+</div>
+<!-- 对话框 -->
+<div class="exitDialog">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">你确定要退出系统？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdtcxt" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="exitDialog4">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否添加账本信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal " id="qdtj" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="common/js/jquery.js"></script>
+<script type="text/javascript" src="common/js/sapar.js"></script>
+<script type="text/javascript" src="common/js2/index.js"></script>
+<script>
+    $(".xg").click(function () {
+        $("#xg").css("display", "block");
+    });
+    $("#qx").click(function () {
+        $("#xg").css("display", "none");
+    });
+    $('.exitDialog4').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    $('.exit4').click(function () {
+        $('.exitDialog4').Dialog('open');
+    });
+    $("#xt").click(function () {
+        $('.exitDialog4').Dialog('close');
+    });
+    $(".xtqx").click(function () {
+        $('.exitDialog4').Dialog('close');
+        $('.exitDialog').Dialog('close');
+    });
+
+    //添加库存信息
+    $("#qdtj").click(function () {
+        var payWay2 = $(".payWay").val();
+        var maintainDate2 = $(".maintainDate").val();
+        var plateNum2 = $(".PlateNum").val();
+        var maintenanceItems2 = $(".maintenanceItems").val();
+        var maintainPrincipal2 = $(".maintainPrincipal").val();
+        var billsDueObligor2 = $(".billsDueObligor").val();
+        var itemsMoney2 = $(".itemsMoney").val();
+        if(billsDueObligor2 =='' || billsDueObligor2==' '){
+            billsDueObligor2='无欠账';
+        }
+        if(maintainPrincipal2 =='' || maintainPrincipal2 ==' '){
+            maintainPrincipal2='无';
+        }
+        $.ajax({
+            url: "/addFinancingAll",
+            type: "post",
+            data: {
+                payWay: payWay2,
+                maintainDate: maintainDate2,
+                maintenanceItems: maintenanceItems2,
+                maintainPrincipal: maintainPrincipal2,
+                billsDueObligor: billsDueObligor2,
+                itemsMoney: itemsMoney2,
+                plateNum: plateNum2
+            },
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    $('.exitDialog4').Dialog('close');
+                    alert("添加账本信息成功");
+                }
+            },
+            error: function () {
+                alert("出现异常，请确定文本框内容输入正确或刷新当前页面");
+            }
+        });
+    });
+
+    $(".maintainDate").blur(function () {
+        if ($(".maintainDate").val() == '') {
+            $(".maintainDate").focus();
+            $(".maintainDate2").text("请输入维修日期");
+        } else {
+            $(".maintainDate2").text("");
+        }
+    });
+    $(".PlateNum").blur(function () {
+        if ($(".PlateNum").val() == '') {
+            $(".PlateNum").focus();
+            $(".PlateNum2").text("请输入车牌号");
+        } else {
+            $(".PlateNum2").text("");
+        }
+    });
+    $(".maintenanceItems").blur(function () {
+        if ($(".maintenanceItems").val() == '') {
+            $(".maintenanceItems").focus();
+            $(".maintenanceItems2").text("请输入维修项目");
+        } else {
+            $(".maintenanceItems2").text("");
+        }
+    });
+    $(".itemsMoney").blur(function () {
+        if ($(".itemsMoney").val() == '') {
+            $(".itemsMoney").focus();
+            $(".itemsMoney2").text("请输入维修价格");
+        } else {
+            $(".itemsMoney2").text("");
+        }
+    });
+
+
+
+    //清空
+    $("#qk").click(function () {
+        $(".payWay").val("");
+        $(".maintainDate").val("");
+        $(".PlateNum").val("");
+        $(".maintenanceItems").val("");
+        $(".maintainPrincipal").val("");
+        $(".billsDueObligor").val("");
+        $(".itemsMoney").val("");
+    });
+
+    $(".qdtcxt").click(function () {
+        window.location.href = "/exitLogin";
+    });
+
+</script>
+</html>

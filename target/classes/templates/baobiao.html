@@ -1,0 +1,346 @@
+﻿<html class="no-js" xmlns:fm="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="common/css/sapar.css"/>
+    <link rel="stylesheet" href="common/css2/index.css"/>
+    <link rel="icon" href="common/images2/logo.jpg" type="image/x-icon"/>
+    <link rel="stylesheet" href="common/css2/index_inner.css"/>
+    <link rel="stylesheet" type="text/css" href="common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="ticket/css/my_order.css"/>
+    <script type="text/javascript" src="common/js/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="caiwu/css/detail.css"/>
+    <title>新澳森校油泵管理系统</title>
+</head>
+<body>
+<div id="container">
+    <div id="hd">
+        <div class="hd-wrap clearfix">
+            <div class="top-light"></div>
+            <ul class="main-nav clearfix" style="height: 0px;margin-left: 5px;">
+                <li data-src="static/ticket/index.html"><a th:href="@{/findFinancingAll}">账本</a></li>
+                <li class="current" data-src="static/caiwu/index.html"><a th:href="@{/findInventoryAll}">库存</a></li>
+                <li data-src="static/msg/index.html"><a th:href="@{/findSupplierAll}">供应商</a></li>
+                <li data-src="static/insurance/index.html"><a th:href="@{/findSalaryAll}">工资</a></li>
+            </ul>
+            <div style="float:left">
+                <img src="common/images/logo1.png" height="100" width="300" style="margin-left: 80px;"/>
+            </div>
+            <div class="toolbar">
+                <div class="login-info clearfix">
+                    <div class="welcome clearfix"><span>欢迎您,</span><a href="javascript:;" class="user-name">管理员</a>
+                    </div>
+                </div>
+                <div class="tool clearfix" style="margin-left: 95px;">
+                    <a href="javascript:;" class="quit-btn exit">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bd">
+        <div class="wrap clearfix">
+            <div class="sidebar" style="background-color: #f1f8fc">
+                <h2 class="sidebar-header"><p>功能导航</p></h2>
+                <ul class="nav">
+                    <li class="office ">
+                        <div class="nav-header"><a th:href="@{/findInventoryAll}" data-src="detail.html"
+                                                   class="clearfix"><span>库存管理</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen current">
+                        <div class="nav-header"><a th:href="@{/findComeenterrecordAll}" data-src="baobiao.html"
+                                                   class="clearfix"><span>出入库记录</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                    <li class="gongwen">
+                        <div class="nav-header"><a th:href="@{/manage}" data-src="manage.html" class="clearfix"><span>添加库存</span><i
+                                class="icon"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="topbar clearfix">
+                    <div id="saper-container">
+                        <div id="saper-hd"></div>
+                        <div id="saper-bd">
+                            <div class="subfiled clearfix">
+                                <h2>出入库统计</h2>
+                            </div>
+                            <div class="subfiled-content">
+                                <form name="f1" id="f1" th:action="findComeenterrecordAll"
+                                      method="post">
+                                    <div class="search-box clearfix">
+                                        <div class="kv-item clearfix">
+                                            <label>商品名称：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" placeholder="商品名称" th:value="${commodityName}"
+                                                       name="commodityName"
+                                                       style="width: 120px;"/>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix">
+                                            <label>型号：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" placeholder="型号" th:value="${model}" name="model"
+                                                       style="width: 120px;"/>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix">
+                                            <label>单位：</label>
+                                            <div class="kv-item-content">
+                                                <input type="text" placeholder="单位" name="unit" th:value="${unit}"
+                                                       style="width: 120px;margin-left: 10px;"/>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div class="kv-item clearfix">
+                                            <label>仓库：</label>
+                                            <div class="kv-item-content">
+                                                <select name="warehouse">
+                                                    <option value="" th:selected="${warehouse==''}">全部</option>
+                                                    <option value="水北仓库" th:selected="${warehouse=='水北仓库'}">水北仓库
+                                                    </option>
+                                                    <option value="上高仓库" th:selected="${warehouse=='上高仓库'}">上高仓库
+                                                    </option>
+                                                    <option value="敖山仓库" th:selected="${warehouse=='敖山仓库'}">敖山仓库
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix" style="margin-left: 10px;">
+                                            <label>出入库：</label>
+                                            <div class="kv-item-content">
+                                                <select name="type">
+                                                    <option value="" th:selected="${type==''}">全部</option>
+                                                    <option value="入库" th:selected="${type=='入库'}">入库</option>
+                                                    <option value="出库" th:selected="${type=='出库'}">出库</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="kv-item clearfix" style="margin-left: 30px;">
+                                            <label>搜索日期：</label>
+                                            <div class="kv-item-content time-select-wrap">
+                                                <div class="time-select">
+                                                    <input type="text" th:value="${comeEnterDate}" name="comeEnterDate"
+                                                           onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                                           placeholder="开始时间"/>
+                                                    <i class="date-icon"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="sapar-btn sapar-btn-recom query-btn"
+                                               value="搜索"/>
+                                    </div>
+                                </form>
+                                <!--表格开始-->
+                                <div class="table">
+                                    <!--表格具体内容-->
+                                    <div class="table-box">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th class="num">编号</th>
+                                                <th class="name">商品名称</th>
+                                                <th class="process">型号</th>
+                                                <th class="node">单位</th>
+                                                <th class="time">出入库数量</th>
+                                                <th class="time">出库/入库</th>
+                                                <th class="time">出入库时间</th>
+                                                <th class="time">备注</th>
+                                                <th class="time">仓库</th>
+                                                <th class="operate">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="no-data" th:each="comeenterrecordAll:${comeenterrecordAlls}">
+                                                <td><a th:text="${comeenterrecordAll.number}" class="blue bold"
+                                                       href="javascript:;">156213</a></td>
+                                                <td><p th:text="${comeenterrecordAll.commodityName}">小杜牌油泵</p></td>
+                                                <td th:text="${comeenterrecordAll.model}">大号</td>
+                                                <td><p th:text="${comeenterrecordAll.unit}">一个</p></td>
+                                                <td th:text="${comeenterrecordAll.comeEnterNum}">20</td>
+                                                <td th:text="${comeenterrecordAll.type}">入库</td>
+                                                <td th:text="${comeenterrecordAll.comeEnterDate}">2018-08-08 16:52</td>
+                                                <td th:text="${comeenterrecordAll.remark}">
+                                                    用了fdasfasdfcdasfsdafasdfeaFSDASDF
+                                                </td>
+                                                <td th:text="${comeenterrecordAll.warehouse}">水北仓库</td>
+                                                <td><a href="javascript:;" class="exit4 sc"
+                                                       th:item-id="${comeenterrecordAll.cId}">[删除]</a></td>
+                                            </tr>
+                                            <tr class="no-data" th:if="${pageInfo.total==0}">
+                                                <td colspan="10">没有查询到任何数据</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="container large" th:if="${pageInfo.total>12}"
+                                             style="position:absolute;left:680px;top:580px;height: 10px;">
+                                            <p style="color: #7d7d7d;text-transform: uppercase;font-size:14px;position:relative;left:-220px;">
+                                                共<span th:text="${pageInfo.total}"></span>条记录 每页<span
+                                                    th:text="${pageInfo.pageSize}"></span>条 现在<span
+                                                    th:text="${pageInfo.pageNum}"></span>/<span
+                                                    th:text="${pageInfo.pages}"></span>页</p>
+                                            <div class="pagination">
+                                                <ul>
+                                                    <li>
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=1,warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">首页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum!=1}">
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=${pageInfo.pageNum-1},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">上一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum==1}">
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=${pageInfo.pageNum},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">上一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum<pageInfo.pages}">
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=${pageInfo.pageNum+1},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">下一页</a>
+                                                    </li>
+                                                    <li th:if="${pageInfo.pageNum==pageInfo.pages}">
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=${pageInfo.pageNum},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">下一页</a>
+                                                    </li>
+                                                    <li>
+                                                        <a th:href="@{/findComeenterrecordAll(pageNum=${pageInfo.pages},warehouse=${warehouse},commodityName=${commodityName},model=${model},unit=${unit},type=${type},comeEnterDate=${comeEnterDate})}">尾页</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!--表格结束-->
+                            </div>
+                        </div>
+                        <div id="saper-ft"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="ft" class="clearfix">
+        <div class="ft-left">
+            <span>新澳森校油泵管理系统</span>
+            <em>Office&nbsp;System</em>
+        </div>
+        <div class="ft-right">
+            <span>Automation</span>
+            <em>V2.0&nbsp;2014</em>
+        </div>
+    </div>
+</div>
+<!-- 温馨提示 -->
+<div class="exitDialog2">
+    <div class="dialog-content">
+        <div class="ui-dialog-text" style="background-color:ActiveBorder;width: 200px;">
+            <p class="dialog-content">我的温馨提示</p>
+        </div>
+    </div>
+</div>
+<!-- 对话框 -->
+<div class="exitDialog">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">你确定要退出系统？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" class="layui-btn layui-btn-normal qdtcxt" style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="exitDialog4">
+    <div class="dialog-content">
+        <div class="ui-dialog-icon">
+            <img src="../../common/images/sc.jpg" height="78" width="78"/>
+        </div>
+        <div class="ui-dialog-text">
+            <p class="dialog-content">是否删除出入库记录信息？</p>
+            <p class="tips">如果是请点击“确定”，否则点“取消”</p>
+            <div class="buttons">
+                <button type="button" id="qdsc" class="layui-btn layui-btn-normal " style="background-color: #1E9FFF;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;">
+                    确定
+                </button>
+                <button type="button" class="xtqx" style="background-color: #FF5722;
+                    padding: 7px 18px 7px 18px;border: 0px;font-size:14px;color:white;border-radius:5%;margin-left: 10px;">
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 修改对话框 -->
+
+
+</body>
+<script type="text/javascript" src="common/js/jquery.js"></script>
+<script type="text/javascript" src="common/js/sapar.js"></script>
+<script type="text/javascript" src="common/js2/index.js"></script>
+<script>
+    $(".xg").click(function () {
+        $("#xg").css("display", "block");
+    });
+
+    $("#qx").click(function () {
+        $("#xg").css("display", "none");
+    });
+
+    $('.exitDialog4').Dialog({
+        title: '温馨提示',
+        autoOpen: false,
+        width: 400,
+        height: 200
+    });
+    $('.exit4').click(function () {
+        $('.exitDialog4').Dialog('open');
+    });
+    $("#xt").click(function () {
+        $('.exitDialog4').Dialog('close');
+    });
+    $(".xtqx").click(function () {
+        $('.exitDialog4').Dialog('close');
+        $('.exitDialog').Dialog('close');
+    });
+
+    var id2;
+    $(".sc").click(function () {
+        id2 = $(this).attr("item-id");
+    });
+
+    //删除库存
+    $("#qdsc").click(function () {
+        $.ajax({
+            url: "/deleteComeenterrecord",
+            type: "post",
+            data: {cId: id2},
+            dataType: "json",
+            success: function (result) {
+                if (result == 1) {
+                    alert("删除库存信息成功");
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出现异常，刷新页面或者联系管理员");
+            }
+        });
+    });
+    $(".qdtcxt").click(function () {
+        window.location.href = "/exitLogin";
+    });
+
+</script>
+</html>

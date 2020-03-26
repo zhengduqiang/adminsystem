@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.adminsystem.mapper.InventoryMapper">
+    <!--同步：查询所有库存信息数据和条件查询加分页-->
+    <select id="findInventoryAll" resultType="Inventory" parameterType="Inventory">
+        SELECT * FROM inventory WHERE 1=1
+        <if test="warehouse != '' and warehouse != null">
+            AND warehouse=#{warehouse}
+        </if>
+        <if test="commodityName != '' and commodityName != null">
+            AND commodityName like CONCAT ('%',#{commodityName},'%')
+        </if>
+        <if test="model != null and model != ''">
+            AND model=#{model}
+        </if>
+        <if test="unit != '' and unit != null">
+            AND unit = #{unit}
+        </if>
+        ORDER BY inventoryDate DESC
+    </select>
+    <!--异步：根据Id查询库存信息-->
+    <select id="findInventoryiId" parameterType="int" resultType="Inventory">
+        SELECT * FROM inventory WHERE iId = #{iId}
+    </select>
+    <!--异步：根据Id修改库存信息-->
+    <update id="updateInventoryiId" parameterType="Inventory">
+        UPDATE inventory SET number=#{number},commodityName=#{commodityName},model=#{model},unit=#{unit},inventoryDate=#{inventoryDate},
+        commodityMoney=#{commodityMoney},residue=#{residue},warehouse=#{warehouse} WHERE iId=#{iId}
+    </update>
+    <!--异步：根据ID删除库存信息-->
+    <delete id="deleteInventoryiId" parameterType="int">
+        DELETE FROM inventory WHERE iId=#{iId}
+    </delete>
+
+    <!--异步：添加库存信息-->
+    <insert id="addInventoryAll" parameterType="Inventory">
+         INSERT INTO inventory(number,commodityName,model,unit,inventoryDate,commodityMoney,residue,warehouse)
+         VALUES(#{number},#{commodityName},#{model},#{unit},#{inventoryDate},#{commodityMoney},#{residue},#{warehouse});
+    </insert>
+
+
+</mapper>
